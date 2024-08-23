@@ -16,7 +16,7 @@ classifier = pickle.load(pickle_in)
 
 
 def predict():
-    st.sidebar.header("Diabetes Prediction")
+    st.sidebar.header("Team 5 - Diabetes Prediction")
     # select = st.sidebar.selectbox('Select Form', ['Form 1'], key='1')
     # if not st.sidebar.checkbox("Hide", True, key='2'):
     st.title("Diabetes Prediction(Only for Females Above 21 Years of Age)")
@@ -71,6 +71,12 @@ def predict():
             st.markdown(
                 "[Visit Here](https://www.mayoclinic.org/diseases-conditions/type-2-diabetes/in-depth/diabetes-prevention/art-20047639#:~:text=Diabetes%20prevention%3A%205%20tips%20for%20taking%20control%201,Skip%20fad%20diets%20and%20make%20healthier%20choices%20)"
             )
+    # add a footer
+    st.markdown(
+        """
+        This App is made by Team 5 - Muskan Kumari Gupta [2347130], Vansh Shah [2347152], Visesh Agarwal [2347164] and Arunoth Symen A [2347215].
+        """
+    )
 
 
 def main():
