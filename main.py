@@ -20,7 +20,8 @@ def predict():
     st.sidebar.header("Team 5 - Diabetes Prediction")
     # select = st.sidebar.selectbox('Select Form', ['Form 1'], key='1')
     # if not st.sidebar.checkbox("Hide", True, key='2'):
-    st.title("Diabetes Prediction(Only for Females Above 21 Years of Age)")
+    st.title("Diabetes Prediction: Team 5")
+    st.markdown(""" ## Diabetes Prediction(Only for Females Above 21 Years of Age)""")
     st.markdown(
         "This trained dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective is to predict based on diagnostic measurements whether a patient has diabetes."
     )
