@@ -75,10 +75,14 @@ def predict():
         """
     ---
     **Made with ❤️ by Team 5**  
-    Muskan Kumari Gupta [2347130]<br>
-    Vansh Shah [2347152]<br>
-    Visesh Agarwal [2347164]<br>
-    Arunoth Symen A [2347215]<br>
+    Muskan Kumari Gupta [2347130]
+
+    Vansh Shah [2347152]
+
+    Visesh Agarwal [2347164]
+
+    Arunoth Symen A [2347215]
+    
     """
     )
 
