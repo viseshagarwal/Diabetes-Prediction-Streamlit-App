@@ -9,10 +9,12 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
-import pickle
 
-pickle_in = open("Diabetes.pkl", "rb")
-classifier = pickle.load(pickle_in)
+# import pickle
+import joblib
+
+
+classifier = joblib.load("Diabetes.pkl")
 
 
 def predict():
