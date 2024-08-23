@@ -18,88 +18,91 @@ classifier = pickle.load(open(filename, "rb"))
 
 def predict():
     st.sidebar.header("Team 5 - Diabetes Prediction")
-    # select = st.sidebar.selectbox('Select Form', ['Form 1'], key='1')
-    # if not st.sidebar.checkbox("Hide", True, key='2'):
-    st.title("Diabetes Prediction: Team 5")
-    st.markdown(""" ## Diabetes Prediction(Only for Females Above 21 Years of Age)""")
+
+    st.title("🩺 Diabetes Prediction: Team 5")
     st.markdown(
-        "This trained dataset is originally from the National Institute of Diabetes and Digestive and Kidney Diseases. The objective is to predict based on diagnostic measurements whether a patient has diabetes."
-    )
-    st.markdown(
-        "Several constraints were placed on the selection of these instances from a larger database. In particular, all patients here are females at least 21 years old of Pima Indian heritage."
+        """
+    ## Diabetes Prediction (Only for Females Above 21 Years of Age)
+    This application predicts whether a patient has diabetes based on diagnostic measurements.
+    The dataset used is from the National Institute of Diabetes and Digestive and Kidney Diseases.
+    """
     )
 
+    st.markdown(
+        """
+    ### Patient Information:
+    """
+    )
     name = st.text_input("Name:")
-    pregnancy = st.number_input("No. of times pregnant:")
-    st.markdown("Pregnancies: Number of times pregnant")
-
-    glucose = st.number_input("Plasma Glucose Concentration :")
-    st.markdown(
-        "Glucose: Plasma glucose concentration a 2 hours in an oral glucose tolerance test"
+    pregnancy = st.number_input("Number of times pregnant:", min_value=0, max_value=20)
+    glucose = st.number_input(
+        "Plasma Glucose Concentration (mg/dL):", min_value=0.0, max_value=300.0
     )
+    bp = st.number_input(
+        "Diastolic Blood Pressure (mm Hg):", min_value=0.0, max_value=200.0
+    )
+    skin = st.number_input(
+        "Triceps Skin Fold Thickness (mm):", min_value=0.0, max_value=100.0
+    )
+    insulin = st.number_input(
+        "2-Hour Serum Insulin (mu U/ml):", min_value=0.0, max_value=900.0
+    )
+    bmi = st.number_input("Body Mass Index (BMI):", min_value=0.0, max_value=70.0)
+    dpf = st.number_input("Diabetes Pedigree Function:", min_value=0.0, max_value=3.0)
+    age = st.number_input("Age:", min_value=21, max_value=120)
 
-    bp = st.number_input("Diastolic blood pressure (mm Hg):")
-    st.markdown("BloodPressure: Diastolic blood pressure (mm Hg)")
-
-    skin = st.number_input("Triceps skin fold thickness (mm):")
-    st.markdown("SkinThickness: Triceps skin fold thickness (mm)")
-
-    insulin = st.number_input("2-Hour serum insulin (mu U/ml):")
-    st.markdown("Insulin: 2-Hour serum insulin (mu U/ml)")
-
-    bmi = st.number_input("Body mass index (weight in kg/(height in m)^2):")
-    st.markdown("BMI: Body mass index (weight in kg/(height in m)^2)")
-
-    dpf = st.number_input("Diabetes Pedigree Function:")
-    st.markdown("DiabetesPedigreeFunction: Diabetes pedigree function")
-
-    age = st.number_input("Age:")
-    st.markdown("Age: Age (years)")
+    st.markdown("**Outcome:** Class variable (0 or 1)")
 
     submit = st.button("Predict")
-    st.markdown("Outcome: Class variable (0 or 1)")
 
     if submit:
         prediction = classifier.predict(
             [[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]]
         )
         if prediction == 0:
-            st.write("Congratulation!", name, "You are not diabetic")
+            st.success(f"🎉 Congratulation {name}! You are not diabetic.")
         else:
-            st.write(
-                name,
-                ", we are really sorry to say but it seems like you are Diabetic. But don't lose hope, we have suggestions for you:",
-            )
+            st.error(f"⚠️ {name}, it seems like you are diabetic. But don't lose hope!")
             st.markdown(
-                "[Visit Here](https://www.mayoclinic.org/diseases-conditions/type-2-diabetes/in-depth/diabetes-prevention/art-20047639#:~:text=Diabetes%20prevention%3A%205%20tips%20for%20taking%20control%201,Skip%20fad%20diets%20and%20make%20healthier%20choices%20)"
+                """
+            Here are some tips to help you manage your health:
+            [Diabetes Prevention Tips](https://www.mayoclinic.org/diseases-conditions/type-2-diabetes/in-depth/diabetes-prevention/art-20047639#:~:text=Diabetes%20prevention%3A%205%20tips%20for%20taking%20control%201,Skip%20fad%20diets%20and%20make%20healthier%20choices%20)
+            """
             )
-    # add a footer
+
+    # Add a footer
     st.markdown(
         """
-        This App is made by Team 5 - Muskan Kumari Gupta [2347130], Vansh Shah [2347152], Visesh Agarwal [2347164] and Arunoth Symen A [2347215].
-        """
+    ---
+    **Made with ❤️ by Team 5**  
+    Muskan Kumari Gupta [2347130], Vansh Shah [2347152], Visesh Agarwal [2347164], Arunoth Symen A [2347215].
+    """
     )
 
 
 def main():
-    new_title = '<p style="font-size: 42px;">Welcome The Diabetes Prediction App!</p>'
-    read_me_0 = st.markdown(new_title, unsafe_allow_html=True)
-    read_me = st.markdown(
-        """
-    The application is built using Streamlit  
-    to demonstrate Diabetes Prediction. It performs prediction on multiple parameters.
-    
-    """
-    )
-
     st.sidebar.title("Select Activity")
     choice = st.sidebar.selectbox("MODE", ("About", "Predict Diabetes"))
+
     if choice == "Predict Diabetes":
-        read_me_0.empty()
-        read_me.empty()
+        st.markdown(
+            '<p style="font-size: 42px; color: #6A5ACD;">Welcome to the Diabetes Prediction App!</p>',
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            """
+        This application uses a predictive model to help determine the likelihood of a patient having diabetes based on various health metrics.
+        """
+        )
         predict()
     elif choice == "About":
-        print()
+        st.markdown(
+            """
+        ### About this App
+        This application is designed to assist in predicting diabetes in patients using a machine learning model.
+        The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
+        """
+        )
 
 
 if __name__ == "__main__":
