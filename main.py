@@ -12,7 +12,7 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 
 # Load the model
-filename = "diabetes-prediction-model.pkl"
+filename = "Diabetes.pkl"
 classifier = pickle.load(open(filename, "rb"))
 
 
