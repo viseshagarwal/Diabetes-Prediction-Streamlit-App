@@ -138,6 +138,7 @@ def predict():
             max_values["Pregnancies"], color="g", linestyle="-", label="Max"
         )
         axes[0, 0].set_title("Pregnancies\nIdeal: 0-2")
+        axes[0, 0].legend()
 
         sns.histplot(patient_data["Glucose"], kde=True, ax=axes[0, 1])
         axes[0, 1].axvline(
@@ -148,6 +149,7 @@ def predict():
         )
         axes[0, 1].axvline(max_values["Glucose"], color="g", linestyle="-", label="Max")
         axes[0, 1].set_title("Glucose (mg/dL)\nIdeal: 90-130")
+        axes[0, 1].legend()
 
         sns.histplot(patient_data["BloodPressure"], kde=True, ax=axes[0, 2])
         axes[0, 2].axvline(
@@ -160,6 +162,7 @@ def predict():
             max_values["BloodPressure"], color="g", linestyle="-", label="Max"
         )
         axes[0, 2].set_title("Blood Pressure (mm Hg)\nIdeal: 80-120")
+        axes[0, 2].legend()
 
         sns.histplot(patient_data["SkinThickness"], kde=True, ax=axes[0, 3])
         axes[0, 3].axvline(
@@ -172,6 +175,7 @@ def predict():
             max_values["SkinThickness"], color="g", linestyle="-", label="Max"
         )
         axes[0, 3].set_title("Skin Thickness (mm)\nIdeal: 10-40")
+        axes[0, 3].legend()
 
         sns.histplot(patient_data["Insulin"], kde=True, ax=axes[1, 0])
         axes[1, 0].axvline(
@@ -182,6 +186,7 @@ def predict():
         )
         axes[1, 0].axvline(max_values["Insulin"], color="g", linestyle="-", label="Max")
         axes[1, 0].set_title("Insulin (mu U/ml)\nIdeal: 16-166")
+        axes[1, 0].legend()
 
         sns.histplot(patient_data["BMI"], kde=True, ax=axes[1, 1])
         axes[1, 1].axvline(
@@ -192,6 +197,7 @@ def predict():
         )
         axes[1, 1].axvline(max_values["BMI"], color="g", linestyle="-", label="Max")
         axes[1, 1].set_title("BMI\nIdeal: 18.5-24.9")
+        axes[1, 1].legend()
 
         sns.histplot(patient_data["DiabetesPedigreeFunction"], kde=True, ax=axes[1, 2])
         axes[1, 2].axvline(
@@ -207,6 +213,7 @@ def predict():
             label="Max",
         )
         axes[1, 2].set_title("Diabetes Pedigree Function\nIdeal: < 0.7")
+        axes[1, 2].legend()
 
         sns.histplot(patient_data["Age"], kde=True, ax=axes[1, 3])
         axes[1, 3].axvline(
@@ -217,6 +224,7 @@ def predict():
         )
         axes[1, 3].axvline(max_values["Age"], color="g", linestyle="-", label="Max")
         axes[1, 3].set_title("Age\nIdeal: 21-60")
+        axes[1, 3].legend()
 
         plt.tight_layout()
         st.pyplot(fig)
@@ -224,7 +232,8 @@ def predict():
         st.markdown(
             """
             ---
-            **Made with ❤️ by Team 5**  
+            **Made with ❤️ by Team 5**
+              
             Muskan Kumari Gupta [2347130]
 
             Vansh Shah [2347152]
