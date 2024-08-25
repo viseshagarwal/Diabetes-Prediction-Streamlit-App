@@ -133,8 +133,9 @@ def data_analysis():
 
     # Pairplot
     st.markdown("### Pairplot of Key Features:")
-    sns.pairplot(df, hue="Outcome", vars=["Glucose", "Insulin", "BMI", "Age"])
-    st.pyplot()
+    fig, ax = plt.subplots()
+    sns.boxplot(data=df, ax=ax)
+    st.pyplot(fig)
     st.markdown(
         "**Interpretation:** The pairplot visualizes pairwise relationships between features, revealing patterns that differentiate diabetic from non-diabetic patients."
     )
