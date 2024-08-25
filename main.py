@@ -215,8 +215,8 @@ def predict():
         plt.tight_layout()
         st.pyplot(fig)
 
-        st.markdown(
-            """
+    st.markdown(
+        """
             ---
             **Made with ❤️ by Team 5**
 
@@ -228,7 +228,7 @@ def predict():
 
             Arunoth Symen A [2347215]
             """
-        )
+    )
 
 
 def data_analysis():
@@ -331,7 +331,9 @@ def data_analysis():
 def main():
     st.sidebar.title("Select Activity")
     choice = st.sidebar.selectbox(
-        "MODE", ("About", "Predict Diabetes", "Data Analysis")
+        # "MODE", ("About", "Predict Diabetes", "Data Analysis")
+        "MODE",
+        ("About", "Predict Diabetes"),
     )
 
     if choice == "Predict Diabetes":
