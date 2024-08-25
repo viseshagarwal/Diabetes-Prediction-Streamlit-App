@@ -283,15 +283,15 @@ def data_analysis():
         "**Interpretation:** The pairplot visualizes pairwise relationships between features, revealing patterns that differentiate diabetic from non-diabetic patients."
     )
 
-    # Existing Plots
-    st.markdown("### Outlier Detection:")
-    fig, ax = plt.subplots()
-    sns.boxplot(data=df, ax=ax)
-    plt.xticks(rotation=60)
-    st.pyplot(fig)
-    st.markdown(
-        "**Interpretation:** The boxplot identifies the presence of outliers across various features, which could influence the model's performance."
-    )
+    # # Existing Plots
+    # st.markdown("### Outlier Detection:")
+    # fig, ax = plt.subplots()
+    # sns.boxplot(data=df, ax=ax)
+    # plt.xticks(rotation=60)
+    # st.pyplot(fig)
+    # st.markdown(
+    #     "**Interpretation:** The boxplot identifies the presence of outliers across various features, which could influence the model's performance."
+    # )
 
     st.markdown("### Random Feature Pair Plot:")
     feature_names = df.columns[:-1]
