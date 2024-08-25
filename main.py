@@ -214,6 +214,12 @@ def predict():
 
         plt.tight_layout()
         st.pyplot(fig)
+        # give an option to download this plot
+        st.markdown(
+            """
+        **Interpretation:** The histograms show the distribution of patient data and the ideal and maximum values for each feature. The vertical lines represent the ideal and maximum values for each feature.
+        """
+        )
 
     st.markdown(
         """
