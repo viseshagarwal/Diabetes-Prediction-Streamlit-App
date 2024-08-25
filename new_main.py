@@ -30,31 +30,22 @@ def predict():
 
     st.markdown("### Patient Information:")
     name = st.text_input("Name:")
-    pregnancy = st.number_input(
-        "Number of times pregnant:", min_value=0, max_value=20, value=0
-    )
+    pregnancy = st.number_input("Number of times pregnant:", min_value=0, max_value=20)
     glucose = st.number_input(
-        "Plasma Glucose Concentration (mg/dL):",
-        min_value=1.0,
-        max_value=300.0,
-        value=85.0,
+        "Plasma Glucose Concentration (mg/dL):", min_value=0.0, max_value=300.0
     )
     bp = st.number_input(
-        "Diastolic Blood Pressure (mm Hg):", min_value=1.0, max_value=200.0, value=70.0
+        "Diastolic Blood Pressure (mm Hg):", min_value=0.0, max_value=200.0
     )
     skin = st.number_input(
-        "Triceps Skin Fold Thickness (mm):", min_value=1.0, max_value=100.0, value=20.0
+        "Triceps Skin Fold Thickness (mm):", min_value=0.0, max_value=100.0
     )
     insulin = st.number_input(
-        "2-Hour Serum Insulin (mu U/ml):", min_value=1.0, max_value=900.0, value=79.0
+        "2-Hour Serum Insulin (mu U/ml):", min_value=0.0, max_value=900.0
     )
-    bmi = st.number_input(
-        "Body Mass Index (BMI):", min_value=1.0, max_value=70.0, value=25.0
-    )
-    dpf = st.number_input(
-        "Diabetes Pedigree Function:", min_value=0.0, max_value=3.0, value=0.5
-    )
-    age = st.number_input("Age:", min_value=21, max_value=120, value=30)
+    bmi = st.number_input("Body Mass Index (BMI):", min_value=0.0, max_value=70.0)
+    dpf = st.number_input("Diabetes Pedigree Function:", min_value=0.0, max_value=3.0)
+    age = st.number_input("Age:", min_value=21, max_value=120)
 
     st.markdown("**Outcome:** Class variable (0 or 1)")
 
@@ -99,55 +90,11 @@ def data_analysis():
 
     st.title("📊 Data Analysis: Diabetes Dataset")
 
-    # Correlation Heatmap
-    st.markdown("### Correlation Heatmap:")
-    fig, ax = plt.subplots()
-    sns.heatmap(df.corr(), annot=True, cmap="coolwarm", ax=ax)
-    st.pyplot(fig)
-    st.markdown(
-        "**Interpretation:** The heatmap shows the correlation between different features. Glucose and Outcome are strongly correlated."
-    )
-
-    # Distribution Plot
-    st.markdown("### Distribution of Glucose and Insulin Levels:")
-    fig, ax = plt.subplots(1, 2, figsize=(14, 5))
-    sns.histplot(df["Glucose"], kde=True, ax=ax[0], color="skyblue").set(
-        title="Glucose Distribution"
-    )
-    sns.histplot(df["Insulin"], kde=True, ax=ax[1], color="salmon").set(
-        title="Insulin Distribution"
-    )
-    st.pyplot(fig)
-    st.markdown(
-        "**Interpretation:** The distributions indicate that most patients have glucose levels around 100-150 mg/dL and insulin levels below 200 mu U/ml."
-    )
-
-    # Outcome Count Plot
-    st.markdown("### Outcome Count:")
-    fig, ax = plt.subplots()
-    sns.countplot(x="Outcome", data=df, palette="viridis", ax=ax)
-    st.pyplot(fig)
-    st.markdown(
-        "**Interpretation:** The count plot shows the distribution of diabetic and non-diabetic patients. There are more non-diabetic patients in the dataset."
-    )
-
-    # Pairplot
-    st.markdown("### Pairplot of Key Features:")
-    sns.pairplot(df, hue="Outcome", vars=["Glucose", "Insulin", "BMI", "Age"])
-    st.pyplot()
-    st.markdown(
-        "**Interpretation:** The pairplot visualizes pairwise relationships between features, revealing patterns that differentiate diabetic from non-diabetic patients."
-    )
-
-    # Existing Plots
     st.markdown("### Outlier Detection:")
     fig, ax = plt.subplots()
     sns.boxplot(data=df, ax=ax)
     plt.xticks(rotation=60)
     st.pyplot(fig)
-    st.markdown(
-        "**Interpretation:** The boxplot identifies the presence of outliers across various features, which could influence the model's performance."
-    )
 
     st.markdown("### Random Feature Pair Plot:")
     feature_names = df.columns[:-1]
