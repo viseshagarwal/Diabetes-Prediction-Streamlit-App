@@ -359,8 +359,8 @@ def main():
     """
         )
 
-    elif choice == "Data Analysis":
-        data_analysis()
+    # elif choice == "Data Analysis":
+    #     data_analysis()
 
 
 if __name__ == "__main__":
