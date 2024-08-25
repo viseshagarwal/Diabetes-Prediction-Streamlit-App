@@ -134,7 +134,10 @@ def data_analysis():
     # Pairplot
     st.markdown("### Pairplot of Key Features:")
     fig, ax = plt.subplots()
-    sns.boxplot(data=df, ax=ax)
+    # sns.boxplot(data=df, ax=ax)
+    sns.pairplot(df, hue="Outcome", palette="viridis")
+    # rotate x-axis labels
+    plt.xticks(rotation=60)
     st.pyplot(fig)
     st.markdown(
         "**Interpretation:** The pairplot visualizes pairwise relationships between features, revealing patterns that differentiate diabetic from non-diabetic patients."
@@ -159,7 +162,10 @@ def data_analysis():
 
     fig2 = sns.relplot(x=x_name, y=y_name, hue="Outcome", data=df)
     st.pyplot(fig2)
-
+    st.markdown(
+        "**Interpretation:** The scatter plot visualizes the relationship between two random features, highlighting the distinction between diabetic and non-diabetic patients"
+        ""
+    )
     st.markdown("### Model Performance Comparison:")
     # Simulate the accuracy and ROC values
     means_accuracy = [87.2, 81.5, 84.0, 78.6, 89.3, 82.4, 88.1]
@@ -186,6 +192,9 @@ def data_analysis():
     ax3.legend()
 
     st.pyplot(fig3)
+    st.markdown(
+        "**Interpretation:** The bar chart compares the accuracy and ROC values of different machine learning models, highlighting the performance of each model in predicting diabetes."
+    )
 
 
 def main():
