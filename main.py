@@ -86,20 +86,6 @@ def predict():
         else:
             st.error(f"⚠️ {name}, it seems like you are diabetic. But don't lose hope!")
 
-        # # Plot the data
-        # st.markdown("### Data Distribution:")
-        # fig, axes = plt.subplots(2, 4, figsize=(15, 10))
-        # sns.histplot(patient_data["Pregnancies"], kde=True, ax=axes[0, 0])
-        # sns.histplot(patient_data["Glucose"], kde=True, ax=axes[0, 1])
-        # sns.histplot(patient_data["BloodPressure"], kde=True, ax=axes[0, 2])
-        # sns.histplot(patient_data["SkinThickness"], kde=True, ax=axes[0, 3])
-        # sns.histplot(patient_data["Insulin"], kde=True, ax=axes[1, 0])
-        # sns.histplot(patient_data["BMI"], kde=True, ax=axes[1, 1])
-        # sns.histplot(patient_data["DiabetesPedigreeFunction"], kde=True, ax=axes[1, 2])
-        # sns.histplot(patient_data["Age"], kde=True, ax=axes[1, 3])
-
-        # plt.tight_layout()
-        # st.pyplot(fig)
         # Plot the data with ideal and max values
         st.markdown("### Data Distribution and Ideal Values:")
 
@@ -125,7 +111,7 @@ def predict():
             "Age": 120,
         }
 
-        fig, axes = plt.subplots(2, 4, figsize=(15, 10))
+        fig, axes = plt.subplots(2, 4, figsize=(20, 15))
 
         sns.histplot(patient_data["Pregnancies"], kde=True, ax=axes[0, 0])
         axes[0, 0].axvline(
@@ -233,7 +219,7 @@ def predict():
             """
             ---
             **Made with ❤️ by Team 5**
-              
+
             Muskan Kumari Gupta [2347130]
 
             Vansh Shah [2347152]
@@ -369,13 +355,30 @@ def main():
         )
         predict()
     elif choice == "About":
+        # st.markdown(
+        #     """
+        # ### Analytics Odyssey
+        # This application is designed to assist in predicting diabetes in patients using a machine learning model.
+        # The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
+        # """
+        # )
         st.markdown(
             """
-        ### Analytics Odyssey
-        This application is designed to assist in predicting diabetes in patients using a machine learning model.
-        The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
-        """
+    ### Analytics Odyssey
+    This application is designed to assist in predicting diabetes in patients using a machine learning model.
+    The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
+    
+    ### ADA CIA3
+    This project is a part of the ADA CIA3 course, under the guidance of Dr. Kavitha R.
+
+    ### Course Professor: Dr. Kavitha R
+    The project is guided and supervised by Dr. Kavitha R, ensuring the application meets academic standards.
+
+    ### Problem Statement
+    "Analytics Odyssey" conveys the idea of an adventurous and transformative journey through the world of data analytics, filled with exploration, discovery, and insight. The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
+    """
         )
+
     elif choice == "Data Analysis":
         data_analysis()
 
