@@ -16,6 +16,80 @@ filename = "Diabetes.pkl"
 classifier = pickle.load(open(filename, "rb"))
 
 
+# def predict():
+#     st.sidebar.header("Team 5 - Diabetes Prediction")
+
+#     st.title("🩺 Diabetes Prediction: Team 5")
+#     st.markdown(
+#         """
+#     ## Diabetes Prediction (Only for Females Above 21 Years of Age)
+#     This application predicts whether a patient has diabetes based on diagnostic measurements.
+#     The dataset used is from the National Institute of Diabetes and Digestive and Kidney Diseases.
+#     """
+#     )
+
+#     st.markdown("### Patient Information:")
+#     name = st.text_input("Name:")
+#     pregnancy = st.number_input(
+#         "Number of times pregnant:", min_value=0, max_value=20, value=0
+#     )
+#     glucose = st.number_input(
+#         "Plasma Glucose Concentration (mg/dL):",
+#         min_value=1.0,
+#         max_value=300.0,
+#         value=85.0,
+#     )
+#     bp = st.number_input(
+#         "Diastolic Blood Pressure (mm Hg):", min_value=1.0, max_value=200.0, value=70.0
+#     )
+#     skin = st.number_input(
+#         "Triceps Skin Fold Thickness (mm):", min_value=1.0, max_value=100.0, value=20.0
+#     )
+#     insulin = st.number_input(
+#         "2-Hour Serum Insulin (mu U/ml):", min_value=1.0, max_value=900.0, value=79.0
+#     )
+#     bmi = st.number_input(
+#         "Body Mass Index (BMI):", min_value=1.0, max_value=70.0, value=25.0
+#     )
+#     dpf = st.number_input(
+#         "Diabetes Pedigree Function:", min_value=0.0, max_value=3.0, value=0.5
+#     )
+#     age = st.number_input("Age:", min_value=21, max_value=120, value=30)
+
+#     st.markdown("**Outcome:** Class variable (0 or 1)")
+
+#     submit = st.button("Predict")
+
+#     if submit:
+#         prediction = classifier.predict(
+#             [[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]]
+#         )
+#         if prediction == 0:
+#             st.success(f"🎉 Congratulation {name}! You are not diabetic.")
+#         else:
+#             st.error(f"⚠️ {name}, it seems like you are diabetic. But don't lose hope!")
+#             st.markdown(
+#                 """
+#             Here are some tips to help you manage your health:
+#             [Diabetes Prevention Tips](https://www.mayoclinic.org/diseases-conditions/type-2-diabetes/in-depth/diabetes-prevention/art-20047639#:~:text=Diabetes%20prevention%3A%205%20tips%20for%20taking%20control%201,Skip%20fad%20diets%20and%20make%20healthier%20choices%20)
+#             """
+#             )
+
+#     # Add a footer
+#     st.markdown(
+#         """
+#     ---
+#     **Made with ❤️ by Team 5**
+#     Muskan Kumari Gupta [2347130]
+
+#     Vansh Shah [2347152]
+
+#     Visesh Agarwal [2347164]
+
+
+#     Arunoth Symen A [2347215]
+#     """
+#     )
 def predict():
     st.sidebar.header("Team 5 - Diabetes Prediction")
 
@@ -61,34 +135,58 @@ def predict():
     submit = st.button("Predict")
 
     if submit:
-        prediction = classifier.predict(
-            [[pregnancy, glucose, bp, skin, insulin, bmi, dpf, age]]
+        # Create a DataFrame for the patient data
+        patient_data = pd.DataFrame(
+            {
+                "Pregnancies": [pregnancy],
+                "Glucose": [glucose],
+                "BloodPressure": [bp],
+                "SkinThickness": [skin],
+                "Insulin": [insulin],
+                "BMI": [bmi],
+                "DiabetesPedigreeFunction": [dpf],
+                "Age": [age],
+            }
         )
-        if prediction == 0:
+
+        # Display patient data
+        st.markdown("### Patient Data:")
+        st.write(patient_data)
+
+        # Predict diabetes
+        prediction = classifier.predict(patient_data)
+        if prediction[0] == 0:
             st.success(f"🎉 Congratulation {name}! You are not diabetic.")
         else:
             st.error(f"⚠️ {name}, it seems like you are diabetic. But don't lose hope!")
-            st.markdown(
-                """
-            Here are some tips to help you manage your health:
-            [Diabetes Prevention Tips](https://www.mayoclinic.org/diseases-conditions/type-2-diabetes/in-depth/diabetes-prevention/art-20047639#:~:text=Diabetes%20prevention%3A%205%20tips%20for%20taking%20control%201,Skip%20fad%20diets%20and%20make%20healthier%20choices%20)
+
+        # Plot the data
+        st.markdown("### Data Distribution:")
+        fig, axes = plt.subplots(2, 4, figsize=(15, 10))
+        sns.histplot(patient_data["Pregnancies"], kde=True, ax=axes[0, 0])
+        sns.histplot(patient_data["Glucose"], kde=True, ax=axes[0, 1])
+        sns.histplot(patient_data["BloodPressure"], kde=True, ax=axes[0, 2])
+        sns.histplot(patient_data["SkinThickness"], kde=True, ax=axes[0, 3])
+        sns.histplot(patient_data["Insulin"], kde=True, ax=axes[1, 0])
+        sns.histplot(patient_data["BMI"], kde=True, ax=axes[1, 1])
+        sns.histplot(patient_data["DiabetesPedigreeFunction"], kde=True, ax=axes[1, 2])
+        sns.histplot(patient_data["Age"], kde=True, ax=axes[1, 3])
+
+        plt.tight_layout()
+        st.pyplot(fig)
+        st.markdown(
             """
-            )
+            ---
+            **Made with ❤️ by Team 5**  
+            Muskan Kumari Gupta [2347130]
 
-    # Add a footer
-    st.markdown(
-        """
-    ---
-    **Made with ❤️ by Team 5**  
-    Muskan Kumari Gupta [2347130]
+            Vansh Shah [2347152]
 
-    Vansh Shah [2347152]
+            Visesh Agarwal [2347164]
 
-    Visesh Agarwal [2347164]
-
-    Arunoth Symen A [2347215]
-    """
-    )
+            Arunoth Symen A [2347215]
+            """
+        )
 
 
 def data_analysis():
