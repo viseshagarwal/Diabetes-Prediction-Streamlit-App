@@ -355,13 +355,6 @@ def main():
         )
         predict()
     elif choice == "About":
-        # st.markdown(
-        #     """
-        # ### Analytics Odyssey
-        # This application is designed to assist in predicting diabetes in patients using a machine learning model.
-        # The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
-        # """
-        # )
         st.markdown(
             """
     ### Analytics Odyssey
@@ -372,7 +365,6 @@ def main():
     This project is a part of the ADA CIA3 course, under the guidance of Dr. Kavitha R.
 
     ### Course Professor: Dr. Kavitha R
-    The project is guided and supervised by Dr. Kavitha R, ensuring the application meets academic standards.
 
     ### Problem Statement
     "Analytics Odyssey" conveys the idea of an adventurous and transformative journey through the world of data analytics, filled with exploration, discovery, and insight. The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
