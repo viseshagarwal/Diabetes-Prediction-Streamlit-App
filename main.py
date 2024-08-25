@@ -367,7 +367,7 @@ def main():
     ### Course Professor: Dr. Kavitha R
 
     ### Problem Statement
-    "Analytics Odyssey" conveys the idea of an adventurous and transformative journey through the world of data analytics, filled with exploration, discovery, and insight. The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
+    "The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
     """
         )
 
