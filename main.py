@@ -283,16 +283,6 @@ def data_analysis():
         "**Interpretation:** The pairplot visualizes pairwise relationships between features, revealing patterns that differentiate diabetic from non-diabetic patients."
     )
 
-    # # Existing Plots
-    # st.markdown("### Outlier Detection:")
-    # fig, ax = plt.subplots()
-    # sns.boxplot(data=df, ax=ax)
-    # plt.xticks(rotation=60)
-    # st.pyplot(fig)
-    # st.markdown(
-    #     "**Interpretation:** The boxplot identifies the presence of outliers across various features, which could influence the model's performance."
-    # )
-
     st.markdown("### Random Feature Pair Plot:")
     feature_names = df.columns[:-1]
     x_name = np.random.choice(feature_names)
@@ -306,6 +296,7 @@ def data_analysis():
         "**Interpretation:** The scatter plot visualizes the relationship between two random features, highlighting the distinction between diabetic and non-diabetic patients"
         ""
     )
+
     st.markdown("### Model Performance Comparison:")
     # Simulate the accuracy and ROC values
     means_accuracy = [87.2, 81.5, 84.0, 78.6, 89.3, 82.4, 88.1]
@@ -358,16 +349,13 @@ def main():
         st.markdown(
             """
     # Analytics Odyssey
-    This application is designed to assist in predicting diabetes in patients using a machine learning model.
-    The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
     
     ## ADA CIA3
-    This project is a part of the ADA CIA3 course, under the guidance of Dr. Kavitha R.
-
     ## Course Professor: Dr. Kavitha R
 
     ## Problem Statement
-    The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
+    This application leverages a machine learning model trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases to predict diabetes in patients.
+    The project encompasses the entire analytics process, including problem understanding, data collection, cleaning, and preparation, followed by analysis, visualization, and the formulation of actionable recommendations.
     """
         )
 
