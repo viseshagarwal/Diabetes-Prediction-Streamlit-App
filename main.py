@@ -357,17 +357,17 @@ def main():
     elif choice == "About":
         st.markdown(
             """
-    ### Analytics Odyssey
+    # Analytics Odyssey
     This application is designed to assist in predicting diabetes in patients using a machine learning model.
     The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
     
-    ### ADA CIA3
+    ## ADA CIA3
     This project is a part of the ADA CIA3 course, under the guidance of Dr. Kavitha R.
 
-    ### Course Professor: Dr. Kavitha R
+    ## Course Professor: Dr. Kavitha R
 
-    ### Problem Statement
-    "The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
+    ## Problem Statement
+    The project involves predicting diabetes in patients using machine learning techniques. It covers the complete analytics process from understanding the problem, data collection, cleaning, and preparation, through to analysis, visualization, and deriving actionable recommendations.
     """
         )
 
