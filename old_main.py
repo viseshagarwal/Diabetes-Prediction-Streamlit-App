@@ -28,7 +28,11 @@ def predict():
     """
     )
 
-    st.markdown("### Patient Information:")
+    st.markdown(
+        """
+    ### Patient Information:
+    """
+    )
     name = st.text_input("Name:")
     pregnancy = st.number_input("Number of times pregnant:", min_value=0, max_value=20)
     glucose = st.number_input(
@@ -78,67 +82,14 @@ def predict():
     Visesh Agarwal [2347164]
 
     Arunoth Symen A [2347215]
+    
     """
     )
 
 
-def data_analysis():
-    st.sidebar.header("Data Analysis")
-
-    # Load the dataset
-    df = pd.read_csv("diabetes.csv")
-
-    st.title("📊 Data Analysis: Diabetes Dataset")
-
-    st.markdown("### Outlier Detection:")
-    fig, ax = plt.subplots()
-    sns.boxplot(data=df, ax=ax)
-    plt.xticks(rotation=60)
-    st.pyplot(fig)
-
-    st.markdown("### Random Feature Pair Plot:")
-    feature_names = df.columns[:-1]
-    x_name = np.random.choice(feature_names)
-    y_name = np.random.choice(feature_names)
-    while x_name == y_name:
-        y_name = np.random.choice(feature_names)
-
-    fig2 = sns.relplot(x=x_name, y=y_name, hue="Outcome", data=df)
-    st.pyplot(fig2)
-
-    st.markdown("### Model Performance Comparison:")
-    # Simulate the accuracy and ROC values
-    means_accuracy = [87.2, 81.5, 84.0, 78.6, 89.3, 82.4, 88.1]
-    means_roc = [91.3, 85.7, 88.5, 82.9, 93.1, 86.6, 92.4]
-
-    fig3, ax3 = plt.subplots(figsize=(8, 5))
-    index = np.arange(len(means_accuracy))
-    bar_width = 0.35
-
-    rects1 = ax3.bar(
-        index, means_accuracy, bar_width, label="Accuracy (%)", color="mediumpurple"
-    )
-    rects2 = ax3.bar(
-        index + bar_width, means_roc, bar_width, label="ROC (%)", color="rebeccapurple"
-    )
-
-    ax3.set_xlim([-1, 8])
-    ax3.set_ylim([60, 95])
-    ax3.set_title("Performance Evaluation - Diabetes Prediction", fontsize=12)
-    ax3.set_xticks(index + bar_width / 2)
-    ax3.set_xticklabels(
-        ("LR", "DT", "SVM", "KNN", "XGBoost", "RF", "GBDT"), rotation=40, ha="center"
-    )
-    ax3.legend()
-
-    st.pyplot(fig3)
-
-
 def main():
     st.sidebar.title("Select Activity")
-    choice = st.sidebar.selectbox(
-        "MODE", ("About", "Predict Diabetes", "Data Analysis")
-    )
+    choice = st.sidebar.selectbox("MODE", ("About", "Predict Diabetes"))
 
     if choice == "Predict Diabetes":
         st.markdown(
@@ -159,8 +110,6 @@ def main():
         The model has been trained on data from the National Institute of Diabetes and Digestive and Kidney Diseases.
         """
         )
-    elif choice == "Data Analysis":
-        data_analysis()
 
 
 if __name__ == "__main__":
